@@ -1,6 +1,7 @@
 package com.configservice.common.controller;
 
 import com.configservice.common.config.DbProperties;
+import com.configservice.common.model.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -30,6 +31,9 @@ public class ConfigController {
     @Autowired
     private DbProperties dbProperties;
 
+    @Autowired
+    private Resource resource;
+
     @GetMapping("/greeting")
     public ResponseEntity<String> getPropertiesValue() {
         return new ResponseEntity<>(greetingMessage + messageFrom, HttpStatus.OK);
@@ -46,7 +50,12 @@ public class ConfigController {
     }
 
     @GetMapping("/properties")
-    public ResponseEntity<String> getDbProperties() {
-        return new ResponseEntity<>(dbProperties.toString() , HttpStatus.OK);
+    public ResponseEntity<DbProperties> getDbProperties() {
+        return new ResponseEntity<>(dbProperties , HttpStatus.OK);
+    }
+
+    @GetMapping("/resource")
+    public ResponseEntity<Resource> fetchResource() {
+        return new ResponseEntity<>(resource , HttpStatus.OK);
     }
 }

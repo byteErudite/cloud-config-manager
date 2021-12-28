@@ -1,0 +1,25 @@
+my:
+  greetings: Just testing the external properties value
+  name:
+    components: vaibhav,kumar,singh
+  value:
+    pairs: "{testString: 'test', testString2: 'test2'}"
+
+spring:
+  profiles.active: dev
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://127.0.0.1:5432/parking_reservation
+    username: vaibhav
+    password: password
+    databaseName: parking_reservation
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  security:
+    enabled: false

@@ -1,0 +1,24 @@
+my:
+  greetings: Just testing the external properties value from dev configs
+  name:
+    components: development,config,server
+  value:
+    pairs: "{testString: 'Localtest', testString2: 'Localtest2'}"
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://127.0.0.1:5432/parking_reservation
+    username: vaibhav
+    password: password
+    databaseName: parking_reservation
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  security:
+    enabled: false
